@@ -3,7 +3,7 @@ import { GoogleMap, useLoadScript, Marker, InfoWindow } from "@react-google-maps
 
 const Map = () => {
   const { isLoaded } = useLoadScript({
-    googleMapsApiKey: 'PLACEHOLDER FOR ACTUAL KEY!!!'
+    googleMapsApiKey: process.env.API_KEY
   })
   if (!isLoaded) return <div>Loading...</div>
   return (
