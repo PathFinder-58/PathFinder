@@ -1,7 +1,16 @@
 import path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import webpack from 'webpack'
+import dotenv from 'dotenv'
+
 const __filename = new URL(import.meta.url).pathname;
 const __dirname = path.dirname(__filename);
+const env = dotenv.config().parsed;
+
+const envKeys = Object.keys(env).reduce((prev, next) => {
+  prev[`process.env.${next}`] = JSON.stringify(env[next]);
+  return prev;
+}, {});
 
 export default {
   entry: ['./client/index.js'], // Webpack will start the bundling process at this file
@@ -60,6 +69,7 @@ export default {
     new HtmlWebpackPlugin({
       template: './client/index.html',
       filename: './index.html'
-    })
+    }),
+    new webpack.DefinePlugin(envKeys)
   ]
 };
