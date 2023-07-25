@@ -4,14 +4,14 @@ import { useNavigate } from 'react-router-dom';
 const Bye = () => {
   const navigate = useNavigate();
 
-  function goHome() {
-    navigate('/home');
+  function goRoot() {
+    navigate('/');
   }
 
   return (
     <div>
       <p>bye</p>
-      <button onClick={goHome}>Take me to Home</button>
+      <button onClick={goRoot}>Take me to Root</button>
     </div>
   )
 }
