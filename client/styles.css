@@ -1,0 +1,23 @@
+.map {
+  height: 98vh;
+  width: 75vw;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  /* margin-right: 1vh; */
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.sidebar {
+  background-color: seagreen;
+  width:100%;
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+}
+
+body {
+  background: black;
+}

@@ -1,14 +1,20 @@
-import React from 'react'
+import * as React from 'react'
 import { Route, Routes } from 'react-router-dom';
-import Hi from './components/Hi.jsx';
-import Bye from './components/Bye.jsx';
+import SideBar from './components/SideBar.jsx';
+import Map from './components/Map.jsx';
+import './styles.css'
 
 const App = () => {
   return (
+      <>
+        <div className='wrapper'>
+          <SideBar />
+          <Map />
+        </div>
     <Routes>
-      <Route path='/' element={<Hi />} />
-      <Route path='/home' element={<Bye />} />
+      <Route path='/' />
     </Routes>
+    </>
   )
 }
 

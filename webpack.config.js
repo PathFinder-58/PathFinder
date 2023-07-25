@@ -1,7 +1,9 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+import path from 'path';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+const __filename = new URL(import.meta.url).pathname;
+const __dirname = path.dirname(__filename);
 
-module.exports = {
+export default {
   entry: ['./client/index.js'], // Webpack will start the bundling process at this file
   // Webpack will bundle files and place them in the "path" directory and use the "filename" property as its name
   output: {
@@ -25,6 +27,11 @@ module.exports = {
         secure: false,
       },
     },
+  },
+  resolve: {
+    fallback: {
+      "path": false
+    }
   },
   
   module: {
