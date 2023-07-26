@@ -1,50 +1,33 @@
 import React, { useState } from 'react';
-import { GoogleMap, useLoadScript, Marker, InfoWindow } from "@react-google-maps/api"
+import { GoogleMap, useLoadScript, Marker, InfoWindow } from "@react-google-maps/api";
+import SearchBar from './SearchBar.jsx';
+import '../styles.css'
 
-const Map = () => {
+const Map = ({ selectedLocation }) => {
   const { isLoaded } = useLoadScript({
-    // googleMapsApiKey: process.env.API_KEY
-  })
-  if (!isLoaded) return <div>Loading...</div>
+    googleMapsApiKey: process.env.API_KEY
+  });
+
+  if (!isLoaded) return <div>Loading...</div>;
+
   return (
-    <div>
-        <GMap />
-    </div>
-  )
-}
-
-
-function GMap() {
-    const center = { lat: 37.7749, lng: -122.45 };
-    const [isInfoWindowOpen, setIsInfoWindowOpen] = useState(false);
-
-    const handleMarkerClick = () => {
-      setIsInfoWindowOpen(true);
-    };
-
-    const handleInfoWindowClose = () => {
-      setIsInfoWindowOpen(false);
-    };
-
-    return (
-      <div className='wrapper'>
-        <GoogleMap zoom={10} center={center} mapContainerClassName="map">
-          <Marker position={center} label='A' title='CodeSmith' animation={window.google.maps.Animation.DROP} draggable={true} onClick={handleMarkerClick}
+      <GoogleMap zoom={10} center={selectedLocation || { lat: 37.7749, lng: -122.45 }} mapContainerClassName="map">
+        {selectedLocation && (
+          <Marker
+            position={{ lat: selectedLocation.lat, lng: selectedLocation.lng }}
+            label="A"
+            animation={window.google.maps.Animation.DROP}
+            draggable={true}
           >
-            {isInfoWindowOpen && (
-            <InfoWindow onCloseClick={handleInfoWindowClose}>
+            {/* <InfoWindow>
               <div>
                 InfoWindow content goes here.
               </div>
-            </InfoWindow>
-          )}
-
+            </InfoWindow> */}
           </Marker>
-          
-        </GoogleMap>
-      </div>
-    )
+        )}
+      </GoogleMap>
+  );
 }
-
 
 export default Map;

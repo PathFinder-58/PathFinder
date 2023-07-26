@@ -1,13 +1,14 @@
 import React from 'react';
-import '../styles.css'
-const SideBar = () => {
+import SearchBar from './SearchBar.jsx'; // Assuming that the SearchBar component is located in the same folder as SideBar.js
+import '../styles.css';
 
-
-  return(
+const SideBar = ({ onSelect }) => {
+  return (
     <div className="sidebar">
       <p>I am the side bar!</p>
+      <SearchBar onSelect={onSelect}/>
     </div>
-  )
-}
+  );
+};
 
 export default SideBar;
