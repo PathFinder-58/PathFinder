@@ -1,9 +1,9 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { GoogleMap, useLoadScript, Marker, InfoWindow } from "@react-google-maps/api"
 
 const Map = () => {
   const { isLoaded } = useLoadScript({
-    googleMapsApiKey: process.env.API_KEY
+    // googleMapsApiKey: process.env.API_KEY
   })
   if (!isLoaded) return <div>Loading...</div>
   return (
