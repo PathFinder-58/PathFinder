@@ -27,6 +27,7 @@ const SearchBar = ({ onSelect }) => {
 
     try {
       const results = await getGeocode({ address });
+      console.log('I am the results: ', results);
       const { formatted_address, place_id } = results[0];
       const { lat, lng } = await getLatLng(results[0]);
       onSelect({ lat, lng, formatted_address, place_id });

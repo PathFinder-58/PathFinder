@@ -4,12 +4,10 @@ import '../styles.css';
 
 const Map = ({ selectedLocation }) => {
   const { isLoaded } = useLoadScript({
-    googleMapsApiKey: process.env.API_KEY
+    // googleMapsApiKey: process.env.API_KEY
   });
   const center = { lat: 37.7749, lng: -122.45 };
   const [userLocation, setUserLocation] = useState(null);
-
-  
 
    // if browser geolocation is allowed, then set userLocation to coordinates
   useEffect(() => {
@@ -26,8 +24,6 @@ const Map = ({ selectedLocation }) => {
     }
   }, []);
 
-  
-
   if (!isLoaded) return <div>Loading...</div>;
 
   return (
@@ -42,6 +38,7 @@ const Map = ({ selectedLocation }) => {
             {selectedLocation && (
             <InfoWindow position={selectedLocation ? { lat: selectedLocation.lat, lng: selectedLocation.lng } : null}>
               <div>
+                Testing <br/>
                 {selectedLocation.formatted_address}
               </div>
             </InfoWindow>

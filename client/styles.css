@@ -83,6 +83,10 @@ input:focus {
   outline: none;
 }
 
+.ratings {
+  display: flex;
+}
+
 .MuiBox-root {
   bottom: 2vh;
   padding: 1rem;

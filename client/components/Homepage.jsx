@@ -13,7 +13,7 @@ const Homepage = () => {
 
   return (
     <div className='wrapper'>
-      <SideBar onSelect={onSelectLocation}/>
+      <SideBar onSelect={onSelectLocation} selectedLocation={selectedLocation}/>
       <Map selectedLocation={selectedLocation} />
     </div>
   )
