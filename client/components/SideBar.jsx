@@ -5,7 +5,7 @@ import '../styles.css';
 const SideBar = ({ onSelect }) => {
   return (
     <div className="sidebar">
-      <p>I am the side bar!</p>
+      <h1>PathFinder</h1>
       <SearchBar onSelect={onSelect}/>
     </div>
   );

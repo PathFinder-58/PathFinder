@@ -3,6 +3,8 @@ import usePlacesAutocomplete, {
   getGeocode,
   getLatLng,
 } from 'use-places-autocomplete';
+import '../styles.css'
+
 
 const SearchBar = ({ onSelect }) => {
   const {
@@ -41,17 +43,17 @@ const SearchBar = ({ onSelect }) => {
   };
 
   return (
-    <div>
+    <div className='searchbar'>
       <input
         value={value}
         onChange={handleInput}
-        // disabled={!ready}
+        disabled={!ready}
         placeholder="Enter a location"
       />
       {status === 'OK' && (
         <ul>
           {data.map((suggestion) => (
-            <li key={suggestion.place_id} onClick={handleSelect(suggestion.description)}>
+            <li className='suggestion' key={suggestion.place_id} onClick={handleSelect(suggestion.description)}>
               {suggestion.description}
             </li>
           ))}
