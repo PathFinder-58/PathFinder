@@ -9,8 +9,27 @@ const SideBar = ({ onSelect }) => {
   
 const [reviewText, setReviewText] = useState('');
 
-  const submitReview = () => {
+  const submitReview = async (e) => {
     console.log(reviewText);
+    // POST request to backend
+    e.preventDefault();
+    try {
+      const response = await fetch('/api/submitReview', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ reviewText }),
+      });
+      if (response.ok) {
+        console.log(response);
+        console.log('Review Submitted!');
+      } else {
+        console.error('Error submitting review');
+      }
+    } catch (error) {
+      console.error(error);
+    }
   }
 
 

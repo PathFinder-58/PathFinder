@@ -28,7 +28,7 @@ body {
   border-bottom-left-radius: 5px;
   border-top-left-radius: 5px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
-  padding-top: 2vh;
+  padding: 2vh;
 }
 
 .searchbar {
@@ -84,9 +84,8 @@ input:focus {
 }
 
 .MuiBox-root {
-  /* position: absolute; */
   bottom: 2vh;
-  width: 20rem;
+  padding: 1rem;
 }
 
 .MuiFormControl-root {
@@ -105,4 +104,5 @@ input:focus {
   justify-content: space-between;
   align-content: center;
   height: 88%;
+  /* width: 20rem; */
 }
