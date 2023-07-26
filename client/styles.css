@@ -82,3 +82,27 @@ input:focus {
   border: 1px solid #007bff;
   outline: none;
 }
+
+.MuiBox-root {
+  /* position: absolute; */
+  bottom: 2vh;
+  width: 20rem;
+}
+
+.MuiFormControl-root {
+  width: 100%;
+  margin-bottom: 2vh;
+}
+
+.MuiButton-root {
+  background-color: purple;
+  width: 100%
+}
+
+.spacer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: center;
+  height: 88%;
+}

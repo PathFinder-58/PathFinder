@@ -7,14 +7,9 @@ import './styles.css'
 
 const App = () => {
   return (
-      <>
-       <div className='wrapper'>   
-          {/* <Homepage /> */}
-        </div>
     <Routes>
       <Route path='/' element={ <Homepage />} />
     </Routes>
-    </>
   )
 }
 

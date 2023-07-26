@@ -1,9 +1,6 @@
 import React from 'react';
-import usePlacesAutocomplete, {
-  getGeocode,
-  getLatLng,
-} from 'use-places-autocomplete';
-import '../styles.css'
+import usePlacesAutocomplete, { getGeocode, getLatLng } from 'use-places-autocomplete';
+import '../styles.css';
 
 
 const SearchBar = ({ onSelect }) => {
@@ -20,11 +17,6 @@ const SearchBar = ({ onSelect }) => {
     debounce: 300,
   });
   
-  console.log('this is ready', ready);
-  console.log('This is the suggestion data', data);
-  console.log('This is the suggestions status', status);
-  console.log('This is the value', value);
-
   const handleInput = (e) => {
     setValue(e.target.value);
   };
@@ -35,8 +27,9 @@ const SearchBar = ({ onSelect }) => {
 
     try {
       const results = await getGeocode({ address });
+      const { formatted_address, place_id } = results[0];
       const { lat, lng } = await getLatLng(results[0]);
-      onSelect({ lat, lng });
+      onSelect({ lat, lng, formatted_address, place_id });
     } catch (error) {
       console.error('Error fetching location:', error);
     }
