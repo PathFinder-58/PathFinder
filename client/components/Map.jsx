@@ -5,7 +5,7 @@ import '../styles.css'
 
 const Map = ({ selectedLocation }) => {
   const { isLoaded } = useLoadScript({
-    googleMapsApiKey: process.env.API_KEY
+    // googleMapsApiKey: process.env.API_KEY
   });
 
   if (!isLoaded) return <div>Loading...</div>;
