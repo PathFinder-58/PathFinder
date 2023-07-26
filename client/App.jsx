@@ -6,14 +6,14 @@ import './styles.css'
 
 const App = () => {
   return (
-      <>
-        <div className='wrapper'>
-          <SideBar />
-          <Map />
-        </div>
-    <Routes>
-      <Route path='/' />
-    </Routes>
+    <>
+      <div className='wrapper'>
+        <SideBar />
+        <Map />
+      </div>
+      <Routes>
+        <Route path='/' />
+      </Routes>
     </>
   )
 }
