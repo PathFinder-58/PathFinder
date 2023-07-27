@@ -30,6 +30,7 @@ const SearchBar = ({ onSelect }) => {
       console.log('I am the results: ', results);
       const { formatted_address, place_id } = results[0];
       const { lat, lng } = await getLatLng(results[0]);
+      console.log(results[0]);
       onSelect({ lat, lng, formatted_address, place_id });
     } catch (error) {
       console.error('Error fetching location:', error);

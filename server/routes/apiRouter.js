@@ -11,16 +11,14 @@ const apiRouter = express.Router();
 //   res.status(200).json(res.locals.user);
 // });
 
-apiRouter.get('/home')
-
-apiRouter.post('/search', apiController.getPlaceInfo, (req, res) => {
-  res.status(200).json({ msg: 'Search Successful'})
-})
+// apiRouter.get('/home')
 
 apiRouter.post('/submitReview', apiController.submitReview, (req, res) => {
   res.status(201).json({msg: 'Review successfully submitted' });
 })
 
-apiRouter.post('/checkReview')
+apiRouter.post('/getReviews', apiController.getReviews, (req, res) => {
+  res.status(200).json({ msg: 'Reviews got got.'})
+})
 
 export default apiRouter;
