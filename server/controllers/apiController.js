@@ -41,7 +41,7 @@ apiController.submitReview = async (req, res, next) => {
 }
 
 apiController.getReviews = async (req, res, next) => {
-  console.log(req.body)
+  console.log('getReviews invoked!', req.body)
   try {
     const { formatted_address } = req.body;
     const queryString = `

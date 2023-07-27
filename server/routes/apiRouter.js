@@ -18,7 +18,8 @@ apiRouter.post('/submitReview', apiController.submitReview, (req, res) => {
 })
 
 apiRouter.post('/getReviews', apiController.getReviews, (req, res) => {
-  res.status(200).json({ msg: 'Reviews got got.'})
+  // res.status(200).json({ msg: 'Reviews got got.'})
+  res.status(200).json(res.locals.reviews)
 })
 
 export default apiRouter;

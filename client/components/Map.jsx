@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { GoogleMap, useLoadScript, Marker, InfoWindow } from "@react-google-maps/api";
 import '../styles.css';
 
-const Map = ({ selectedLocation }) => {
+const Map = ({ selectedLocation, reviews }) => {
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: process.env.API_KEY
   });
@@ -24,6 +24,23 @@ const Map = ({ selectedLocation }) => {
     }
   }, []);
 
+  // const reviews = () => {
+  //   try {
+  //     const { formatted_address } = selectedLocation
+  //     const response = await fetch('/api/getReviews', {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: { formatted_address }
+  //     })
+  //     console.log(response)
+  //     return response;
+  //   } catch (error) {
+  //     console.error('Error getting user location', error);
+  //   }
+    
+
   if (!isLoaded) return <div>Loading...</div>;
 
   return (
@@ -38,8 +55,10 @@ const Map = ({ selectedLocation }) => {
             {selectedLocation && (
             <InfoWindow position={selectedLocation ? { lat: selectedLocation.lat, lng: selectedLocation.lng } : null}>
               <div>
-                Testing <br/>
-                {selectedLocation.formatted_address}
+                This is where the name would go <br/>
+                {selectedLocation.formatted_address}<br/>
+                Reviews would go here
+                {/* {reviews} */}
               </div>
             </InfoWindow>
             )}

@@ -5,7 +5,7 @@ import { TextField, Box, Rating, Typography } from '@mui/material';
 import Button from '@mui/material/Button';
 // import { useState } from 'react';
 
-const SideBar = ({ onSelect, selectedLocation }) => {
+const SideBar = ({ onSelect, selectedLocation, getReviews }) => {
   
   const [reviewText, setReviewText] = useState('');
   const [rating, setRating] = React.useState(0);
@@ -40,7 +40,7 @@ const SideBar = ({ onSelect, selectedLocation }) => {
     <div className="sidebar">
       <h1>PathFinder</h1>
       <div className='spacer'>
-      <SearchBar onSelect={onSelect}/>
+      <SearchBar onSelect={onSelect} getReviews={getReviews}/>
       <Box component="form">
         <Typography component="legend" className="ratings" >
           PathFinder Score: <Rating name="simple-controlled" value={rating} onChange={(event, newValue) => setRating(newValue)} />

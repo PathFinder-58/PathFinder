@@ -3,7 +3,7 @@ import usePlacesAutocomplete, { getGeocode, getLatLng } from 'use-places-autocom
 import '../styles.css';
 
 
-const SearchBar = ({ onSelect }) => {
+const SearchBar = ({ onSelect, getReviews }) => {
   const {
     ready,
     value,
@@ -27,10 +27,11 @@ const SearchBar = ({ onSelect }) => {
 
     try {
       const results = await getGeocode({ address });
-      console.log('I am the results: ', results);
+      // console.log('I am the results: ', results);
       const { formatted_address, place_id } = results[0];
       const { lat, lng } = await getLatLng(results[0]);
-      console.log(results[0]);
+      // console.log(results[0]);
+      await getReviews(formatted_address);
       onSelect({ lat, lng, formatted_address, place_id });
     } catch (error) {
       console.error('Error fetching location:', error);
@@ -38,7 +39,7 @@ const SearchBar = ({ onSelect }) => {
   };
 
   return (
-    <div className='searchbar'>
+    <div className='searchbar' alt='searchbar'>
       <input
         value={value}
         onChange={handleInput}
@@ -48,7 +49,7 @@ const SearchBar = ({ onSelect }) => {
       {status === 'OK' && (
         <ul>
           {data.map((suggestion) => (
-            <li className='suggestion' key={suggestion.place_id} onClick={handleSelect(suggestion.description)}>
+            <li className='suggestion' alt='list-of-suggestions' key={suggestion.place_id} onClick={handleSelect(suggestion.description)}>
               {suggestion.description}
             </li>
           ))}
