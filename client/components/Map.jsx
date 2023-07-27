@@ -4,7 +4,7 @@ import '../styles.css';
 
 const Map = ({ selectedLocation }) => {
   const { isLoaded } = useLoadScript({
-    // googleMapsApiKey: process.env.API_KEY
+    googleMapsApiKey: process.env.API_KEY
   });
   const center = { lat: 37.7749, lng: -122.45 };
   const [userLocation, setUserLocation] = useState(null);

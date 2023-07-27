@@ -13,21 +13,23 @@ VALUES ('${text}', ${rating}, (SELECT place_id FROM places WHERE address = '${ad
 */
 
 apiController.submitReview = async (req, res, next) => {
-  console.log(req.body)
-  console.log(query)
+  console.log(req.body);
+  console.log(query);
   try {
-    const { reviewText, address, rating, name } = req.body;
-    const queryString = `INSERT INTO places (name, address)
-    VALUES ('Place Name', 'Place Address')
+    const { reviewText, formatted_address, rating, name } = req.body;
+    const insertPlace = `INSERT INTO places (name, address)
+    VALUES ('${name}', '${formatted_address}')
     ON CONFLICT (address)
-    DO NOTHING;
+    DO NOTHING;`
     
-    INSERT INTO reviews (text, rating, place_id)
-    VALUES ('${text}', ${rating}, (SELECT place_id FROM places WHERE address = '${address}'));`
+    
+    const insertReview = `INSERT INTO reviews (text, rating, place_id)
+    VALUES ('${reviewText}', ${rating}, (SELECT place_id FROM places WHERE address = '${formatted_address}'));`
 
-    const values = [reviewText];
-    await query(queryString, values); 
-    return next()
+    // const values = [reviewText];
+    await query(insertPlace); 
+    await query(insertReview);
+    return next();
   } catch (error) {
     console.log('Error inserting review text', error);
     return next({
@@ -41,7 +43,7 @@ apiController.submitReview = async (req, res, next) => {
 apiController.getReviews = async (req, res, next) => {
   console.log(req.body)
   try {
-    const { address } = req.body;
+    const { formatted_address } = req.body;
     const queryString = `
     SELECT 
         places.name AS place_name,
@@ -53,8 +55,9 @@ apiController.getReviews = async (req, res, next) => {
     JOIN 
         reviews ON places.place_id = reviews.place_id
     WHERE 
-        places.address = '${address}';`
-        await query(queryString); 
+        places.address = '${formatted_address}';`
+        const response = await query(queryString); 
+        res.locals.reviews = response.rows[0];
         return next()
   } catch (error) {
     console.log('Error getting review text', error);
